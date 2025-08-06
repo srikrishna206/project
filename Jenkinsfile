@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = '3d-city-app'
+        IMAGE_NAME = 'gaming'
         CONTAINER_NAME = 'city-app'
         PORT = '8080'
     }
