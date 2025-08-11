@@ -8,13 +8,22 @@ pipeline {
     }
 
     stages {
-        stage('Deploy Prebuilt Docker Image') {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the image from the Dockerfile in the repo
+                    docker.build("${IMAGE_NAME}")
+                }
+            }
+        }
+
+        stage('Deploy Docker Container') {
             steps {
                 script {
                     // Stop and remove existing container if running
                     sh "docker rm -f ${CONTAINER_NAME} || true"
 
-                    // Run the prebuilt image
+                    // Run the newly built image
                     sh "docker run -d -p ${PORT}:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}"
                 }
             }
@@ -30,4 +39,3 @@ pipeline {
         }
     }
 }
-
