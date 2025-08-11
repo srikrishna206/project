@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'gaming'
         CONTAINER_NAME = 'city-app'
-        PORT = '9090'
+        PORT = '8085'
     }
 
     stages {
